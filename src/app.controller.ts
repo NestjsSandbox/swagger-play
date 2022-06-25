@@ -1,20 +1,9 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Version,
-  VERSION_NEUTRAL,
+//* app.controller.ts
+
+import {   Body, Controller, Get, Post, Version, VERSION_NEUTRAL,
 } from '@nestjs/common';
-import {
-  ApiBody,
-  ApiOkResponse,
-  ApiOperation,
-  ApiParam,
-  ApiResponse,
-  ApiTags,
-  ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
+import { ApiBody, ApiOkResponse, ApiOperation,  ApiParam, ApiTags,
+   ApiUnauthorizedResponse, } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { SigninDto } from './signin.dto';
 
@@ -102,23 +91,6 @@ export class AppController {
   @ApiOperation({ summary: '[ApiOperation] - Creating a new user' })
   @ApiOkResponse({ description: 'User login' })
   @ApiUnauthorizedResponse({ description: 'Invalid credentials.' })
-  // @ApiBody({
-  //   schema: {
-  //     type: 'object',
-  //     properties: {
-  //       email: {
-  //         type: 'string',
-  //         example: 'me@place.com',
-  //         description: 'The email address of user logging in.',
-  //       },
-  //       pinCode: {
-  //         type: 'integer',
-  //         example: '123',
-  //         description: 'The digits of the pincode.'
-  //       }
-  //     }
-  //   }
-  // })
   @ApiBody({ type: SigninDto })
   createUser(@Body() body: SigninDto) {
     return 'New user created';
